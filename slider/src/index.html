@@ -8,10 +8,16 @@
     </script>
 
     <script src="components/handlebars/handlebars.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+    <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo1.css" />
     <script src="components/steroids-js/steroids.js"></script>
     <script src="components/supersonic/supersonic.js"></script>
     <script src="components/webcomponentsjs/webcomponents.js"></script>
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script src="components/codrops/BookBlock/js/jquery.bookblock.js"></script>
+    <!-- <script src="components/codrops/bookblock/js/jquerypp.custom.js"></script>
+    <script src="components/codrops/BookBlock/js/modernizr.custom.js"></script> -->
 
     <script src="components/momentjs/min/moment.min.js"></script>
 
@@ -38,30 +44,78 @@
     <div id="container">
       <!-- - - Edit body below this line - - -->
 
-      <h1>Hello Module!</h1>
+      <div class="bb-custom-wrapper">
+          <div id="bb-bookblock" class="bb-bookblock"><hr noshade class = "white-line">
+              <div class="bb-item">
+                  <div class="bots">pro </div>
+              </div>
+              <div class="bb-item">
+                  <div class="bots">2 </div>
+              </div>
+              <div class="bb-item">
+                  <div class="bots">3 </div>
+              </div>
+              <div class="bb-item">
+                  <div class="bots">4 </div>
+              </div>
+              <div class="bb-item">
+                  <div class="bots">5 </div>
+              </div>
 
-      <p>
-        My name is src/index.html.
-      </p>
+          </div>
+          <hr noshade class= "divider">
 
-      <p>
-        It is now: <span id="current-day"></span>
-      </p>
+      </div>
 
-      <p>
-        Using the example date format defined in Composer 2.0,
-        the date is: <span id="example-date"></span>.
-      </p>
 
-      <p>
-        Here are my users:
-        <ul class="list">
-        <super-data-repeat model="users">
-          <li class="item">{{ username }}</li>
-        </super-data-repeat>
-        </ul>
-      </p>
+<!-- /container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/jquerypp.custom.js"></script>
+<script src="js/jquery.bookblock.js"></script>
+<script>
 
+
+// $("#tasks").html(tasks.task);
+
+  var Page = (function () {
+      var config = {
+              $bookBlock: $('#bb-bookblock'),
+              $navNext: $('#bb-nav-next'),
+              $navPrev: $('#bb-nav-prev'),
+              $navFirst: $('#bb-nav-first'),
+              $navLast: $('#bb-nav-last')
+          },
+
+          init = function () {
+
+              config.$bookBlock.bookblock({
+                  speed: 800,
+                  shadowSides: 0.8,
+                  shadowFlip: 0.7,
+                  orientation: 'horizontal',
+                  autoplay: true,
+                  direction: "ltr"
+              });
+
+              initEvents();
+          },
+          initEvents = function () {
+
+
+              setInterval(function () {
+                config.$bookBlock.bookblock('prev') ;
+              }, 3000);
+
+
+          };
+      return {
+          init: init
+      };
+  })();
+</script>
+<script>
+  Page.init();
+</script>
       <!-- - - Edit body above this line - - -->
     </div>
   </body>
